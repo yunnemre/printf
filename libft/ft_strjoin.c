@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ydinler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/27 14:17:25 by ydinler           #+#    #+#             */
-/*   Updated: 2025/06/03 18:51:57 by ydinler          ###   ########.fr       */
+/*   Created: 2025/06/02 14:56:27 by ydinler           #+#    #+#             */
+/*   Updated: 2025/06/02 15:02:48 by ydinler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/ft_printf.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+#include "libft.h"
+
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
+	size_t	len;
+	char	*res;
 
-	d = (unsigned char *) dest;
-	s = (const unsigned char *)src;
-	if (dest == src || n == 0)
-		return (dest);
-	while (n--)
-	{
-		*d++ = *s++;
-	}
-	return (dest);
+	len = ft_strlen(s1);
+	len += ft_strlen(s2) + 1;
+	res = (char *)malloc(len);
+	if (!res)
+		return (NULL);
+	ft_strlcpy(res, s1, len);
+	if (ft_strlcat(res, s2, len) == len - 1)
+		return (res);
+	return (NULL);
 }

@@ -19,14 +19,14 @@ int	ft_check_persent(char c, va_list args)
 		return (ft_putstr(args, 2));
 	else if (c == 'p')
 		return (ft_itoa_man(args, HEX_DOWN, c) + 2);
-	else if (c == 'd'|| c == 'i')
+	else if (c == 'd' || c == 'i')
 		return (ft_itoa_man(args, DECIMAL, c));
 	else if (c == 'u')
-		return(ft_itoa_man(args, DECIMAL, c));
+		return (ft_itoa_man(args, DECIMAL, c));
 	else if (c == 'x')
 		return (ft_itoa_man(args, HEX_DOWN, c));
 	else if (c == 'X')
-		return(ft_itoa_man(args, HEX_UP, c));
+		return (ft_itoa_man(args, HEX_UP, c));
 	else if (c == '%')
 	{
 		write(1, "%", 1);
@@ -34,11 +34,3 @@ int	ft_check_persent(char c, va_list args)
 	}
 	return (0);
 }
-/*else if (c == 'i')
-		return(printf("%i\n",args));
-	else if (c == 'u')
-		return(printf("%u\n",args));
-	else if (c == 'x')
-		return(printf("%x\n",(unsigned int)*arg));
-	else if (c == 'X')
-		return(printf("%X\n",));*/

@@ -14,7 +14,6 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <stdint.h>
 
@@ -25,7 +24,7 @@
 int		ft_printf(const char *format, ...);
 int		ft_check_persent(char c, va_list args);
 int		ft_putstr(va_list args, int mod);
-int	    ft_itoa_man(va_list arg, char *base, char fmt);
+int		ft_itoa_man(va_list arg, char *base, char fmt);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s);
 void	*ft_memcpy(void *dest, const void *src, size_t n);

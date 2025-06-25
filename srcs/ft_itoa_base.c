@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/ft_printf.h"
-#include <string.h>
+#include "../libft/libft.h"
+
 static int	get_base_len(long nbr, int base_len)
 {
 	int	len;
@@ -24,9 +25,9 @@ static int	get_base_len(long nbr, int base_len)
 	return (len);
 }
 
-static char *ft_itoa_ptr(uintptr_t nbr, char *base)
+static char	*ft_itoa_ptr(uintptr_t nbr, char *base)
 {
-	char		res[17];      
+	char		res[17];
 	size_t		base_len;
 	int			i;
 	char		*final;
@@ -41,9 +42,10 @@ static char *ft_itoa_ptr(uintptr_t nbr, char *base)
 		res[--i] = base[nbr % base_len];
 		nbr /= base_len;
 	}
-	final = ft_strdup(&res[i]); 
+	final = ft_strdup(&res[i]);
 	return (final);
 }
+
 static char	*ft_itoa_dec(int nbr, char *base)
 {
 	int		len;
@@ -72,8 +74,6 @@ static char	*ft_itoa_dec(int nbr, char *base)
 	}
 	return (res);
 }
-// unsigned int cevirmeyi unttun duzelt yarın
-// kodun hepsi temzie cekilmeli ve libft a kulanılabilir hale geitirlmeli
 
 static char	*ft_itoa_hex(unsigned int nbr, char *base)
 {
@@ -98,26 +98,26 @@ static char	*ft_itoa_hex(unsigned int nbr, char *base)
 	}
 	return (res);
 }
-int	ft_itoa_man(va_list arg, char *base,char fmt)
+
+int	ft_itoa_man(va_list arg, char *base, char fmt)
 {
-	char	*str;
-	size_t	len;
-	uintptr_t addr_val;
+	char		*str;
+	size_t		len;
+	uintptr_t	addr_val;
 
 	if (fmt == 'd' || fmt == 'i')
-		str =ft_itoa_dec(va_arg(arg,int), base);
+		str = ft_itoa_dec(va_arg(arg, int), base);
 	else if (fmt == 'u' || fmt == 'x' || fmt == 'X' )
-		str =ft_itoa_hex(va_arg(arg,unsigned int), base);
+		str = ft_itoa_hex(va_arg(arg, unsigned int), base);
 	else if (fmt == 'p')
 	{
 		addr_val = (uintptr_t)va_arg(arg, void *);
-		str =ft_itoa_ptr(addr_val, base);
-		if (*str == '0')
+		if (addr_val == 0)
 		{
-			write(1,"(nil)", 5);
-			free(str);
-			return(3);
+			(write(1, "(nil)", 5));
+			return (3);
 		}
+		str = ft_itoa_ptr(addr_val, base);
 		write(1, "0x", 2);
 	}
 	else
@@ -127,4 +127,3 @@ int	ft_itoa_man(va_list arg, char *base,char fmt)
 	free(str);
 	return (len);
 }
-

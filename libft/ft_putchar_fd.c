@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ydinler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ydinler <ydinler@student.42istanbul.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 16:14:12 by ydinler           #+#    #+#             */
-/*   Updated: 2025/05/27 13:44:48 by ydinler          ###   ########.fr       */
+/*   Created: 2025/06/03 17:22:18 by ydinler           #+#    #+#             */
+/*   Updated: 2025/06/03 17:44:02 by ydinler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	write(fd, &c, 1);
 }
